@@ -1,8 +1,9 @@
 using System.Threading.Tasks;
 using Grpc.Core;
+using GrpcServiceSample.Core;
 using Microsoft.Extensions.Logging;
 
-namespace GrpcServiceSample
+namespace GrpcServiceSample.Services
 {
     public class GreeterService : Greeter.GreeterBase
     {

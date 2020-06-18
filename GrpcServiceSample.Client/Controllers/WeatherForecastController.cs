@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Grpc.Net.Client;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -24,16 +25,16 @@ namespace GrpcServiceSample.Client.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<WeatherForecast> Get()
+        public async Task<string> Get()
         {
-            var rng = new Random();
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-                             {
-                                 Date = DateTime.Now.AddDays(index),
-                                 TemperatureC = rng.Next(-20, 55),
-                                 Summary = Summaries[rng.Next(Summaries.Length)]
-                             })
-                             .ToArray();
+            var channel = GrpcChannel.ForAddress("http://localhost:5000");
+            var client = new Greeter.GreeterClient(channel);
+            var sayHelloAsync = await client.SayHelloAsync(new HelloRequest()
+            {
+                Name = "Test"
+            });
+
+            return sayHelloAsync.Message;
         }
     }
 }
