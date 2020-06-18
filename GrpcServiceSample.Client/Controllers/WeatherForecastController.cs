@@ -19,18 +19,19 @@ namespace GrpcServiceSample.Client.Controllers
         };
 
         private readonly ILogger<WeatherForecastController> _logger;
+        private readonly Hello.HelloClient _client;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public WeatherForecastController(ILogger<WeatherForecastController> logger,
+                                         Hello.HelloClient client)
         {
             _logger = logger;
+            _client = client;
         }
 
         [HttpGet]
         public async Task<string> Get()
         {
-            var channel = GrpcChannel.ForAddress("http://localhost:5000");
-            var client = new Hello.HelloClient(channel);
-            var response = await client.HelloWorldAsync(new HelloWorldRequest
+            var response = await _client.HelloWorldAsync(new HelloWorldRequest
             {
                 Name = "Test"
             });
