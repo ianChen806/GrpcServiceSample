@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Grpc.Net.Client;
+using GrpcServiceSample.Core;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -12,7 +13,7 @@ namespace GrpcServiceSample.Client.Controllers
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
+        private static readonly string[] Summaries =
         {
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         };
@@ -28,13 +29,13 @@ namespace GrpcServiceSample.Client.Controllers
         public async Task<string> Get()
         {
             var channel = GrpcChannel.ForAddress("http://localhost:5000");
-            var client = new Greeter.GreeterClient(channel);
-            var sayHelloAsync = await client.SayHelloAsync(new HelloRequest()
+            var client = new Hello.HelloClient(channel);
+            var response = await client.HelloWorldAsync(new HelloWorldRequest
             {
                 Name = "Test"
             });
 
-            return sayHelloAsync.Message;
+            return response.Message;
         }
     }
 }

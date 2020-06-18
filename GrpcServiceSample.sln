@@ -4,8 +4,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrpcServiceSample", "GrpcSe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrpcServiceSample.Client", "GrpcServiceSample.Client\GrpcServiceSample.Client.csproj", "{6D97C96B-3C82-4CA4-ABA8-0BBE050A049C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrpcGreeterClient", "GrpcGreeterClient\GrpcGreeterClient.csproj", "{C541C632-2F67-492B-86A8-E8A36DA9AE47}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,9 +18,5 @@ Global
 		{6D97C96B-3C82-4CA4-ABA8-0BBE050A049C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6D97C96B-3C82-4CA4-ABA8-0BBE050A049C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6D97C96B-3C82-4CA4-ABA8-0BBE050A049C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C541C632-2F67-492B-86A8-E8A36DA9AE47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C541C632-2F67-492B-86A8-E8A36DA9AE47}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C541C632-2F67-492B-86A8-E8A36DA9AE47}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C541C632-2F67-492B-86A8-E8A36DA9AE47}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

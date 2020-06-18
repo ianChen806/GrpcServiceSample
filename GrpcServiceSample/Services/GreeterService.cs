@@ -5,7 +5,7 @@ using Microsoft.Extensions.Logging;
 
 namespace GrpcServiceSample.Services
 {
-    public class GreeterService : Greeter.GreeterBase
+    public class GreeterService : Hello.HelloBase
     {
         private readonly ILogger<GreeterService> _logger;
 
@@ -14,11 +14,11 @@ namespace GrpcServiceSample.Services
             _logger = logger;
         }
 
-        public override Task<HelloReply> SayHello(HelloRequest request, ServerCallContext context)
+        public override Task<HelloWorldResponse> HelloWorld(HelloWorldRequest request, ServerCallContext context)
         {
-            return Task.FromResult(new HelloReply
+            return Task.FromResult(new HelloWorldResponse()
             {
-                Message = "Hello " + request.Name
+                Message = "Hello World! " + request.Name
             });
         }
     }
